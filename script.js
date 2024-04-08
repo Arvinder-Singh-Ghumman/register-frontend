@@ -1,12 +1,11 @@
 window.onload = () => {
   document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault();
-    confirmation()
+    confirmation();
   });
 };
 
 function confirmation() {
-
   // getting values
   const id = document.getElementById("id").value;
   const fullName = document.getElementById("fullName").value;
@@ -22,12 +21,12 @@ function confirmation() {
   const data = new URLSearchParams(formData).toString();
 
   // Send POST request
-  fetch("http://localhost:3000/fee", {
+  fetch("https://resgister-backend.onrender.com/fee", {
     method: "POST",
     body: data,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-  },
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
   })
     .then((response) => {
       if (!response.ok) {
@@ -38,6 +37,20 @@ function confirmation() {
     .then((data) => {
       // Handle the response
       console.log("Response:", data);
+      document.querySelector("form").style.display="none"
+      document.getElementById("confirmation").style.display = "flex";
+      document.querySelector("h1").innerText = "Confirmation of registration";
+      document.getElementById("information").innerText = `ID: ${data.id}
+      Full Name: ${data.fullName}
+      Address: ${data.address}
+      Fee: ${data.fee}`;
+      
+      document.getElementById("switch").addEventListener("click",()=>{
+        document.querySelector("h1").innerText = "Registeration Page";
+        document.querySelector("form").style.display="block"
+        document.getElementById("confirmation").style.display = "none";
+
+      })
     })
     .catch((error) => {
       console.error("Error sending POST request:", error);

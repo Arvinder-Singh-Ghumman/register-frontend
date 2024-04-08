@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+    <h1>Registration Page</h1>
+    <div id="confirmation">
+      <h2>confirmation NOTICE</h2>
+      <p id="information"></p>
+    </div>
+    <form id="form">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id" value="ID" required><br>
+        <label for="fullName">Full Name:</label><br>
+        <input type="text" id="fullName" name="fullName" value="Full Name" required><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" value="Address" required><br>
+        <label for="status">Status:</label><br>
+        <select id="status" name="status" required>
+            <option value="">Select Status</option>
+            <option value="student">Student</option>
+            <option value="staff">Staff</option>
+            <option value="volunteer">Volunteer</option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
